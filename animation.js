@@ -1,31 +1,161 @@
+var scrolled = false
+var scrollAnimationRunning = false
 $(document).ready(() => {
-    $('.main-carousel').flickity({
-        // options
-        cellAlign: 'left',
-        contain: true
-      });
-    Particles.init({
-        selector: '.background',
-        maxParticles: 80,
-        connectParticles: true,
-        color: ["#FFFFFF"],
-      });
-      
 
-    var scene = document.getElementById('firstSection');
-    var parallaxInstance = new Parallax(scene, {
-    });
-    $('.main').addEventListener("mousemove", () => {
-        parallaxInstance.friction(0.5, 0.5);
-    })
-    // init controller
-    var controller = new ScrollMagic.Controller({ globalSceneOptions: { duration: 100 } });
+  //FLICKITY 
+  $('.main-carousel').flickity({
+    // options
+    cellAlign: 'left',
+    contain: true
+  });
 
-    // build scenes
-    new ScrollMagic.Scene({ triggerElement: "#secondSection" })
-        .setClassToggle("#secondSection", "text") // add class toggle
-        .addIndicators() // add indicators (requires plugin)
-        .addTo(controller);
 
+  //PARTICLES
+  Particles.init({
+    selector: '.background',
+    maxParticles: 80,
+    connectParticles: true,
+    color: ["#FFFFFF"],
+  });
+
+
+  //PARALAX
+  var scene = document.getElementById('firstSection');
+  var parallaxInstance = new Parallax(scene, {
+  });
+  $('.main').mousemove(() => {
+    parallaxInstance.friction(0.5, 0.5);
+  })
+
+
+
+  // AOS
+  //AOS.init();
+  
+
+
+  //ANIMEJS
+  var tl = anime.timeline({
+    easing: 'linear',
+    duration: 500
+  });
+  tl.add({
+    targets: '.backgroundtext',
+    keyframes: [
+      {
+        translateY: -100,
+        opacity: 0
+      },
+      {
+        translateY: 0,
+        opacity: 1
+      },
+    ],
+    complete: function(anim) {
+      anime({
+        targets: '.infoText',
+        keyframes: [
+          {
+            translateY: 40,
+            opacity: 0
+          },
+          {
+            translateY: 0,
+            opacity: 1
+          },
+        ],
+        easing:'linear'
+
+      })
+      anime({
+        targets: '.userIcon',
+        keyframes: [
+          {
+            translateY: -40,
+            opacity: 0
+          },
+          {
+            translateY: 0,
+            opacity: 1
+          },
+        ],
+        easing:'linear'
+      })
+      }
+  });
+  document.addEventListener("wheel",()=>{
+    if(!scrollAnimationRunning)
+    {
+      !scrolled ? scrollDown() : scrollUp()
+    }
+  })
 
 })
+
+function scrollDown()
+{
+  scrollAnimationRunning = true
+
+  anime({
+    duration: 500,
+    targets: '#secondSection',
+    keyframes: [
+      {
+        translateY: -800,
+        opacity: 1
+      },
+    ],
+    loop: false,
+    easing: 'linear',
+  })
+  anime({
+    duration: 500,
+    targets: '#firstSection',
+    keyframes: [
+      {
+        translateY: -1000,
+        opacity: 1
+      },
+    ],
+    loop: false,
+    easing: 'linear',
+    complete:()=>{
+      scrollAnimationRunning = false;
+    }
+  })
+  scrolled = true
+}
+
+function scrollUp()
+{
+  scrollAnimationRunning = true
+  anime({
+    duration: 500,
+    targets: '#secondSection',
+    keyframes: [
+      {
+        translateY: 0,
+        opacity: 1
+      },
+    ],
+    loop: false,
+    easing: 'linear',
+
+  })
+  anime({
+    duration: 500,
+    targets: '#firstSection',
+    keyframes: [
+      {
+        translateY: 0,
+        opacity: 1
+      },
+    ],
+    loop: false,
+    easing: 'linear',
+    complete:()=>{
+      scrollAnimationRunning = false;
+    }
+  })
+  scrolled = false
+}
