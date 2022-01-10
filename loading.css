@@ -22,6 +22,9 @@ body{
     padding-top: 0.1em;
     padding-right: 0.05em;
     padding-bottom: 0.15em;
+    background-color: rgba(34, 34, 34, 0.397);
+    box-shadow: 0 30px 40px rgba(34, 34, 34,.1);
+
   }
   
   .title .line {
@@ -42,4 +45,9 @@ body{
   .title .letter {
     display: inline-block;
     line-height: 1em;
+  }
+  canvas#canvas {
+    position: fixed;
+    height: 100%;
+    width: 100%;
   }
