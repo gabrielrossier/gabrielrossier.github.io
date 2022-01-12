@@ -3,6 +3,7 @@ body{
     background-color: #242424;
     font-family: 'Pacifico', cursive;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 h1.ml8 {
     font-weight: 900;
