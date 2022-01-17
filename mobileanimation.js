@@ -1,49 +1,23 @@
 $(document).ready(() => {
-    anime.timeline({ loop: false })
-        .add({
-            targets: '.ml8 .circle-white',
-            scale: [0, 7],
-            opacity: [1, 0],
-            easing: "easeInOutExpo",
-            rotateZ: 360,
-            duration: 1100
-        }).add({
-            targets: '.ml8 .circle-container',
-            scale: [0, 5.5],
-            duration: 1100,
-            easing: "easeInOutExpo",
-            offset: '-=1000'
-        }).add({
-            targets: '.ml8 .circle-dark',
-            scale: [0, 5],
-            duration: 1100,
-            easing: "easeOutExpo",
-            offset: '-=600'
-        }).add({
-            targets: '.ml8 .letters-left',
-            scale: [0, 1],
-            duration: 1200,
-            offset: '-=550'
-        }).add({
-            targets: '.ml8 .bang',
-            scale: [0, 1],
-            rotateZ: [45, 15],
-            duration: 1200,
-            offset: '-=1000'
-        }).add({
-            targets: '.ml8',
-            opacity: 1,
-            duration: 1000,
-            easing: "easeOutExpo",
-            delay: 1400
-        })
-
     anime({
-        targets: '.ml8 .circle-dark-dashed',
-        rotateZ: 360,
-        duration: 8000,
-        easing: "linear",
+        targets: '.arrowContainer .arrow-path',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1500,
+        delay: function(el, i) { return i * 250 },
+        direction: 'alternate',
+        opacity:1,
         loop: true
-    });
+      });
+      var controller = new ScrollMagic.Controller();
+      new ScrollMagic.Scene({
+        triggerElement: "#trigger1",
+        triggerHook: 0.9, // show, when scrolled 10% into view
+        duration: "80%", // hide 10% before exiting view (80% + 10% from bottom)
+        offset: 50 // move trigger to center of element
+    })
+      // trigger animation by adding a css class
+      .setClassToggle("#animate1", "show")
+      .addTo(controller);
 })
 

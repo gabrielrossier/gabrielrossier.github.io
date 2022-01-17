@@ -1,79 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-body{
-    background-color: #242424;
-    font-family: 'Pacifico', cursive;
-    overflow-y: hidden;
-    overflow-x: hidden;
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 0px;
+  margin: 0px;
 }
-h1.ml8 {
-    font-weight: 900;
-    font-size: 4.5em;
-    color: #fff;
-    width: 3em;
-    height: 3em;
-    text-align: center;
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  flex-direction: column;
+}
+.glassContainer{
+  text-align: justify;
+  padding: 2em;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba(92, 17, 88, 0.37);
+  backdrop-filter: blur( 5.5px );
+  -webkit-backdrop-filter: blur( 5.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  color: white;
+  margin:5em  ;
+  top: unset !important;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.image{
+  width: 100%;
+  align-self: center;
+}
+h1
+{
+  font-size: 6em;
+}
+p{
+  font-size: 3em;
+  font-family: OCR A Std, monospace;
+}
+.arrow
+{
+  rotate: -90deg;
+  scale: 2;
+}
+.arrowContainer{
+  width: 100px;
+  margin-top: 10em;
+  margin-bottom: 10em;
+}
+.arrow path{
+  fill: white;
+  opacity: 0;
+}
+#animate1
+{
+  opacity: 0;
+  transition: all ease-in 1s;
+}
+.show
+{
+  opacity: 1 !important;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
   }
-  
-  .ml8 .letters-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    height: 1em;
+  50% {
+      background-position: 100% 50%;
   }
-  
-  .ml8 .letters {
-    position: relative;
-    z-index: 2;
-    display: inline-block;
-    line-height: 0.7em;
-    right: -0.12em;
-    top: -0.2em;
+  100% {
+      background-position: 0% 50%;
   }
-  
-  .ml8 .bang {
-    font-size: 1.4em;
-    top: auto;
-    left: -0.06em;
-  }
-  
-  .ml8 .circle {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-  }
-  
-  .ml8 .circle-white {
-    width: 3em;
-    height: 3em;
-    border: 2px dashed white;
-    border-radius: 2em;
-  }
-  
-  .ml8 .circle-dark {
-    width: 2.2em;
-    height: 2.2em;
-    background: rgba( 255, 255, 255, 0.25 );
-    backdrop-filter: blur( 5.5px );
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    border-radius: 5em;
-    z-index: 1;
-  }
-  
-  .ml8 .circle-dark-dashed {
-    border-radius: 2.4em;
-    background-color: transparent;
-    border: 2px dashed rgba( 255, 255, 255, 0.18 );
-    width: 2.3em;
-    height: 2.3em;
-  }
-  canvas#canvas {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-  }
+}
