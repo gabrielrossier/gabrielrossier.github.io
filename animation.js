@@ -25,13 +25,7 @@ $(document).ready(() => {
   });
   $('.main').mousemove(() => {
     parallaxInstance.friction(0.5, 0.5);
-  })
-
-
-
-  // AOS
-  //AOS.init();
-  
+  }) 
 
 
   //ANIMEJS
@@ -84,6 +78,8 @@ $(document).ready(() => {
       }
   });
   document.addEventListener("wheel",()=>{
+    
+    //this if prevent scroll if animation is not finished
     if(!scrollAnimationRunning)
     {
       !scrolled ? scrollDown() : scrollUp()
