@@ -11,7 +11,7 @@ $(document).ready(() => {
 
 
   //PARTICLES
-  Particles.init({
+  Particles.init({ 
     selector: '.background',
     maxParticles: 80,
     connectParticles: true,
@@ -31,7 +31,7 @@ $(document).ready(() => {
   //ANIMEJS
   var tl = anime.timeline({
     easing: 'linear',
-    duration: 500
+    duration: 1000
   });
   tl.add({
     targets: '.backgroundtext',
